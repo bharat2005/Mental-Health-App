@@ -45,17 +45,16 @@ export default function App() {
     
   function handleLoginSubmit(e){
     e.preventDefault();
-    axios.post('https://mental-health-app-ax5a.onrender.com/check',loginData)
+    axios.post('https://mental-health-app-ax5a.onrender.com/login',loginData)
     .then(responce =>{
-      console.log("Server Message:", responce.data)
-    //   if (responce.data.message === "success"){
-    //       alert("Login Successful!")
-    //       setNext(true)
-    //   } else{
-    //     alert("Invalid Details!")
-    //   }
-    // })
-  })
+      console.log("Server Message:", responce.data.message)
+      if (responce.data.message === "success"){
+          alert("Login Successful!")
+          setNext(true)
+      } else{
+        alert("Invalid Details!")
+      }
+    })
     .catch(error => {
       console.error("Error: ", error)
     })
