@@ -79,7 +79,7 @@ export default function App() {
           <>
         <form onSubmit={handleRegisterSubmit}>
           
-          <TextField type="text" label="Name" name="name" margin="normal" onChange={handleRegisterChange} required fullWidth/>
+          <TextField key="bharat" type="text" label="Name" name="name" margin="normal" onChange={handleRegisterChange} required fullWidth/>
 
           <Box sx={{display:'flex', margin:'8px', gap:"16px"}}>
             <FormControl fullWidth>
