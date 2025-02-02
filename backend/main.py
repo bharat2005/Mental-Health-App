@@ -32,7 +32,7 @@ admin = Admin(app, name='Database Admin', template_mode='bootstrap3')
 admin.add_view(ModelView(User, db.session)) 
 
 
-
+#123
 
 
 @app.route('/register', methods=["POST"])
