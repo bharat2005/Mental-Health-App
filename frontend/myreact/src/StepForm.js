@@ -19,7 +19,7 @@ export default function StepForm(){
   }
 
   function handleFinishClick(){
-    axios.post("http://127.0.0.1:5000/mood", formData)
+    axios.post("https://mental-health-app-ax5a.onrender.com/mood", formData)
       .then((response) => {
         console.log("Server Message: ", response.data.message)
         setNext(true)
