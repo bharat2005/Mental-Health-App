@@ -2,8 +2,7 @@ from flask import Flask, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
 from flask_bcrypt import Bcrypt
-from flask_admin import Admin
-from flask_admin.contrib.sqla import ModelView
+
 
 
 
@@ -28,10 +27,6 @@ class User(db.Model):
     age = db.Column(db.Integer)
     regNo = db.Column(db.Integer)
     password = db.Column(db.String())
-
-admin = Admin(app, name='Database Admin', template_mode='bootstrap3')
-admin.add_view(ModelView(User, db.session)) 
-
 
 
 
