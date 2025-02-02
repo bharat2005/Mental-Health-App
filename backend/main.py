@@ -57,11 +57,6 @@ def mood():
     return jsonify({'this_data_can_be_used_further':data})
 
 
-@app.route('/check', methods=["GET","POST"])
-def check():
-    return "its for checking purpose only"
-
-
 
 
 
