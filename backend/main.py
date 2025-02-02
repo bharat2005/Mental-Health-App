@@ -7,7 +7,7 @@ from flask_bcrypt import Bcrypt
 app=Flask(__name__)
 CORS(app)
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///needhelp.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://needhelp_user:fezd1NM448XI9czS3kHLUL4hr9EAWn3M@dpg-cufmu02j1k6c73fsb6e0-a/needhelp'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 
