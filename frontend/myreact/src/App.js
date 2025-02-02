@@ -26,7 +26,7 @@ export default function App() {
   }
   function handleRegisterSubmit(e){
     e.preventDefault();
-    axios.post('http://127.0.0.1:5000/register', registerData)
+    axios.post('https://mental-health-app-ax5a.onrender.com/register', registerData)
     .then(responce =>{
       console.log("Server Message:", responce.data.message)
       if (responce.data.message == "success"){
@@ -45,7 +45,7 @@ export default function App() {
     
   function handleLoginSubmit(e){
     e.preventDefault();
-    axios.post('http://127.0.0.1:5000/login',loginData)
+    axios.post('https://mental-health-app-ax5a.onrender.com/login',loginData)
     .then(responce =>{
       console.log("Server Message:", responce.data.message)
       if (responce.data.message === "success"){
