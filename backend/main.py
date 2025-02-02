@@ -58,11 +58,8 @@ def login():
 @app.route('/mood',methods=["POST"])
 def mood():
     data = request.get_json()
-    # This data can be used for further individual's personal assistance!h
-    return jsonify({'message':data})
-
-
-
+    # This data can be used for further individual's personal assistance!
+    return jsonify({'this_data_can_be_used_further':data})
 
 
 
