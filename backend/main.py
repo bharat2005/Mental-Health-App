@@ -57,7 +57,9 @@ def mood():
     return jsonify({'message':data})
 
 
-
+@app.route('/help', methods=["GET"])
+def help():
+    return jsonify({'message':"help me pleasee!!!"})
 
 
 
