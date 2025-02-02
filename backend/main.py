@@ -54,12 +54,12 @@ def login():
 def mood():
     data = request.get_json()
     # This data can be used for further individual's personal assistance!
-    return jsonify({'message':data})
+    return jsonify({'this_data_can_be_used_further':data})
 
 
-@app.route('/help', methods=["GET"])
-def help():
-    return jsonify({'message':"help me pleasee!!!"})
+@app.route('/check', methods=["GET"])
+def check():
+    return jsonify({'message':"its for checking purpose only"})
 
 
 
