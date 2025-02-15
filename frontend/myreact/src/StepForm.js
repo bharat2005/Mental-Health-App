@@ -9,7 +9,9 @@ const array = ["Mood", "Diagnosed", "Past", "Concern", "Swings"]
 export default function StepForm(){
   const [next,setNext] = useState(false)
   const [step, setStep] = useState(0);
-  const [formData, setFormData] = useState({ photo: "", relationship: "", bio: "", personality: ""});
+  const [formData, setFormData] = useState({});
+  const [nextData, setNextData] = useState();
+  const [load, setLoad] = useState(false)
 
 
 
@@ -19,16 +21,18 @@ export default function StepForm(){
   }
 
   function handleFinishClick(){
-    axios.post("https://mental-health-app-ax5a.onrender.com/mood", formData)
+    setLoad(true)
+    axios.post("http://127.0.0.1:5000/mood", formData)
       .then((response) => {
-        console.log("Server Message: ", response.data.message)
+        console.log("Server Message: ", response.data)
         setNext(true)
+        setNextData(response.data)
       })
       .catch((error) => console.error("Error", error));
   }
 
 if (next){
-  return <Dashboard />
+  return <Dashboard nextData={nextData}/>
 }
 
   return (
@@ -95,7 +99,7 @@ if (next){
         {step <= 3 ? (
         <Button type="submit" onClick={()=>setStep(prev=>prev+1)} variant="contained" color="primary">Next</Button>
         ):(
-        <Button type="submit" onClick={handleFinishClick} variant="contained" color="primary">Finish</Button>
+        <Button type="submit" onClick={handleFinishClick} variant="contained" color="primary" loading={load}>Finish</Button>
          )}
                
       </Box>
