@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Card, CardContent, Typography, Button, Modal, Box } from "@mui/material";
 
-export default function Dashboard() {
+export default function Dashboard({nextData}) {
   const [index, setIndex] = useState(0);
   const [open, setOpen] = useState(false);
 
@@ -14,8 +14,11 @@ export default function Dashboard() {
   let card=cards[index]
 
   return (
-    <Box sx={{width: "100vw",height: "100vh",backgroundImage: "url(/image0.jpg)",backgroundSize: "cover",backgroundRepeat: "no-repeat",display:'flex',justifyContent: "center",alignItems: "center", }}>
+    <Box sx={{width: "100vw",height: "100vh",backgroundImage: "url(/background2.jpg)",backgroundSize: "cover",backgroundPosition: "center",display:'flex', flexDirection:'column',justifyContent: "center",alignItems: "center", }}>
     
+    <Box sx={{backgroundColor:'white', border:'2px solid black', width:'30%', borderRadius: 3,boxShadow: 3, padding:'5px' }} >
+    <Typography variant='body2'>{nextData}</Typography>
+    </Box>
       <Card sx={{width:'400px', height:"400px", backgroundColor: "white",padding: 3,borderRadius: 3,boxShadow: 3}} onDoubleClick={()=>setIndex(Math.floor(Math.random() * cards.length))} >
         <Typography sx={{textAlign:'center'}}>{card.title}</Typography>
         <CardContent>
@@ -30,7 +33,7 @@ export default function Dashboard() {
           </video>
         </Box>
       </Modal>
-      <Typography sx={{ position: 'absolute', bottom: 0, left: '50%', transform: 'translateX(-50%)',padding: '10px',backgroundColor: 'rgba(255, 255, 255, 0.7)', borderRadius:'5px'}}>
+      <Typography sx={{ position: 'absolute', bottom: 0, left: '50%', transform: 'translateX(-50%)',padding: '10px',backgroundColor: '#F34343', borderRadius:'5px'}}>
         Tap on image to play video. Double-tap on card for next.
         </Typography>
       </Box>

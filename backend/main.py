@@ -2,6 +2,7 @@ from flask import Flask, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
 from flask_bcrypt import Bcrypt
+from transformers import pipeline
 
 
 
@@ -30,6 +31,16 @@ class User(db.Model):
 
 
 
+
+
+
+
+
+
+
+
+
+
 @app.route('/register', methods=["POST"])
 def register():
     data = request.get_json()
@@ -53,8 +64,26 @@ def login():
 @app.route('/mood',methods=["POST"])
 def mood():
     data = request.get_json()
-    # This data can be used for further individual's personal assistance!
-    return jsonify({'this_data_can_be_used_further':data})
+    generator = pipeline("text-generation", model="gpt2")
+
+    mood = data['mood']
+    diagnosed = data['diagnosed']
+    past = data['past']
+    concern = data['concern']
+    swings = data['swings']
+    print(mood+diagnosed+past+concern+swings)
+    prompt = f"Provide a tips as an Mental-assistant for someone who have following concerns as it feels {mood}, has diagnosed {diagnosed}, emotional state as {past}, have concern {concern}, and have {swings} in mood"
+    prompt2 = "Tips for mentally depressed person"
+    output = generator(
+        prompt2,
+        max_length=50,
+        num_return_sequences=1,
+    )
+
+
+    result = output[0]['generated_text']
+    
+    return jsonify(result)
 
 
 
